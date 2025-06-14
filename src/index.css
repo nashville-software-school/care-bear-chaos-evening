@@ -1,0 +1,145 @@
+/* Care Bear Wrestling Theme Styles - Simplified */
+
+:root {
+  /* Care Bear Colors */
+  --cheer-bear-pink: #ff69b4;
+  --grumpy-bear-blue: #4169e1;
+  --sunshine-bear-yellow: #ffd700;
+  --good-luck-bear-green: #32cd32;
+  --wrestling-gold: #ffd700;
+  --canvas-white: #f8f8ff;
+
+  /* Simple gradient */
+  --rainbow-gradient: linear-gradient(
+    135deg,
+    #ff69b4 0%,
+    #ff8c00 25%,
+    #ffd700 50%,
+    #32cd32 75%,
+    #4169e1 100%
+  );
+
+  font-family: "Comic Sans MS", "Trebuchet MS", cursive, sans-serif;
+  line-height: 1.6;
+}
+
+body {
+  background: var(--rainbow-gradient);
+  background-attachment: fixed;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  color: #2c3e50;
+}
+
+#root {
+  max-width: 800px;
+  width: 100%;
+}
+
+#container {
+  background: rgba(248, 248, 255, 0.95);
+  border: 4px solid var(--wrestling-gold);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  max-width: 55em;
+  margin: auto;
+}
+
+/* Input section */
+#input-block {
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid var(--cheer-bear-pink);
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+label {
+  display: block;
+  margin: 15px 0 5px 0;
+  font-weight: bold;
+  color: var(--grumpy-bear-blue);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--good-luck-bear-green);
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  background: white;
+  color: var(--grumpy-bear-blue);
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--cheer-bear-pink);
+}
+
+/* Story section - simple and clean */
+#story-block {
+  background: white;
+  border: 3px solid var(--wrestling-gold);
+  border-radius: 10px;
+  padding: 30px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--grumpy-bear-blue);
+}
+
+/* Story sections - no borders, just spacing */
+#story-block section {
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
+#story-block section:last-child {
+  margin-bottom: 0;
+  font-weight: bold;
+  text-align: center;
+  font-style: italic;
+  color: var(--cheer-bear-pink);
+}
+
+/* Placeholder message styling */
+#container > :not(#input-block):not(#story-block) {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px dashed var(--sunshine-bear-yellow);
+  border-radius: 10px;
+  color: var(--grumpy-bear-blue);
+  font-weight: bold;
+}
+
+/* Simple responsive design */
+@media (max-width: 768px) {
+  #container {
+    margin: 10px;
+    padding: 20px;
+  }
+
+  #input-block {
+    grid-template-columns: 1fr;
+  }
+
+  input[type="text"] {
+    font-size: 14px;
+  }
+
+  #story-block {
+    font-size: 16px;
+    padding: 20px;
+  }
+}
