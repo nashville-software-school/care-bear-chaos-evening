@@ -1,45 +1,24 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import "./App.css"
-import { Inputs } from "./components/Inputs"
-import { Story } from "./components/Story"
 
 const App = () => {
-  const [adjective, setAdjective] = useState("")
-  const [weapon, setWeapon] = useState("")
-  const [emotion, setEmotion] = useState("")
-  const [sound, setSound] = useState("")
-  const [wrestler, setWrestler] = useState("")
-  const [noun, setNoun] = useState("")
-  const [showStory, setShowStory] = useState(false)
-
-  useEffect(() => {
-    if (adjective && weapon && emotion && wrestler && noun) {
-      setShowStory(true)
-    }
-  }, [adjective, weapon, emotion, wrestler, noun])
-
   return (
     <div id="container">
-      <Inputs
-        setAdjective={setAdjective}
-        setWeapon={setWeapon}
-        setEmotion={setEmotion}
-        setSound={setSound}
-        setWrestler={setWrestler}
-        setNoun={setNoun}
-      />
-      {showStory ? (
-        <Story
-          adjective={adjective}
-          weapon={weapon}
-          emotion={emotion}
-          sound={sound}
-          wrestler={wrestler}
-          noun={noun}
-        />
-      ) : (
-        "Fill in all words to read the story!"
-      )}
+      <div id="story-block">
+        <section>
+          It was a [adjective] night in Care-a-Lot when Cheer Bear entered the
+          ring, clutching a [weapon].Across from them stood Grumpy Bear, visibly
+          [emotion] and ready to rumble.
+        </section>
+        <section>
+          Suddenly, the clouds burst with a deafening [sound], and [wrestler]
+          fell from the sky like a sparkly meteor. But instead of a smackdown,
+          they all paused... and shared a [noun].
+        </section>
+        <section>
+          The audience exploded with joy. Classic Care Bear chaos.
+        </section>
+      </div>
     </div>
   )
 }
