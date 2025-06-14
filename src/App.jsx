@@ -1,45 +1,76 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import "./App.css"
-import { Inputs } from "./components/Inputs"
-import { Story } from "./components/Story"
 
 const App = () => {
-  const [adjective, setAdjective] = useState("")
-  const [weapon, setWeapon] = useState("")
-  const [emotion, setEmotion] = useState("")
-  const [sound, setSound] = useState("")
-  const [wrestler, setWrestler] = useState("")
-  const [noun, setNoun] = useState("")
-  const [showStory, setShowStory] = useState(false)
+  let [userInputs, setUserInputs] = useState({
+    adjective: "________",
+    weapon: "________",
+    emotion: "________",
+    sound: "________",
+    wrestler: "________",
+    noun: "________",
+  })
 
-  useEffect(() => {
-    if (adjective && weapon && emotion && wrestler && noun) {
-      setShowStory(true)
+  /**
+    { 
+      adjective: "fluffy", 
+      weapon: "chair", 
+      ...
     }
-  }, [adjective, weapon, emotion, wrestler, noun])
+  **/
+
+  // use for all inputs
+  const updateInput = (event) => {
+    setUserInputs({
+      ...userInputs,
+      [event.target.name]: event.target.value,
+    })
+  }
 
   return (
     <div id="container">
-      <Inputs
-        setAdjective={setAdjective}
-        setWeapon={setWeapon}
-        setEmotion={setEmotion}
-        setSound={setSound}
-        setWrestler={setWrestler}
-        setNoun={setNoun}
-      />
-      {showStory ? (
-        <Story
-          adjective={adjective}
-          weapon={weapon}
-          emotion={emotion}
-          sound={sound}
-          wrestler={wrestler}
-          noun={noun}
-        />
-      ) : (
-        "Fill in all words to read the story!"
-      )}
+      <div id="input-block">
+        <label>
+          Adjective:
+          <input type="text" name="adjective" onChange={updateInput} />
+        </label>
+        <label>
+          Weapon:
+          <input type="text" name="weapon" onChange={updateInput} />
+        </label>
+        <label>
+          Sound:
+          <input type="text" name="sound" onChange={updateInput} />
+        </label>
+        <label>
+          Emotion:
+          <input type="text" name="emotion" onChange={updateInput} />
+        </label>
+        <label>
+          Wrestler:
+          <input type="text" name="wrestler" onChange={updateInput} />
+        </label>
+        <label>
+          Noun:
+          <input type="text" name="noun" onChange={updateInput} />
+        </label>
+      </div>
+      <div id="story-block">
+        <section>
+          It was a {userInputs.adjective} night in Care-a-Lot when Cheer Bear
+          entered the ring, clutching a {userInputs.weapon}. Across from them
+          stood Grumpy Bear, visibly {userInputs.emotion} and ready to rumble.
+        </section>
+        <section>
+          Suddenly, the clouds burst with a deafening {userInputs.sound}, and{" "}
+          {userInputs.wrestler}
+          fell from the sky like a sparkly meteor. But instead of a smackdown,
+          they all paused... and shared a {userInputs.noun}.
+        </section>
+        <section>
+          The audience exploded with joy. Classic Care Bear chaos.
+        </section>
+      </div>
     </div>
   )
 }
